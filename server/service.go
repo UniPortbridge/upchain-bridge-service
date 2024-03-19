@@ -209,6 +209,7 @@ func (s *bridgeService) GetBridges(ctx context.Context, req *pb.GetBridgesReques
 				LeafType:      uint32(deposit.LeafType),
 				OrigNet:       uint32(deposit.OriginalNetwork),
 				OrigAddr:      deposit.OriginalAddress.Hex(),
+				SourceAddr:    deposit.SourceAddress.Hex(),
 				Amount:        deposit.Amount.String(),
 				DestNet:       uint32(deposit.DestinationNetwork),
 				DestAddr:      deposit.DestinationAddress.Hex(),

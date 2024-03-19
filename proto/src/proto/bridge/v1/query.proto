@@ -70,17 +70,18 @@ message Deposit {
     uint32 leaf_type = 1;
     uint32 orig_net = 2;
     string orig_addr = 3;
-    string amount = 4;
-    uint32 dest_net = 5;
-    string dest_addr = 6;
-    uint64 block_num = 7;
-    uint64 deposit_cnt = 8;
-    uint32 network_id = 9;
-    string tx_hash = 10;
-    string claim_tx_hash = 11;
-    string metadata = 12;
-    bool   ready_for_claim = 13;
-    uint64 timestamp = 14;
+    string source_addr = 4;
+    string amount = 5;
+    uint32 dest_net = 6;
+    string dest_addr = 7;
+    uint64 block_num = 8;
+    uint64 deposit_cnt = 9;
+    uint32 network_id = 10;
+    string tx_hash = 11;
+    string claim_tx_hash = 12;
+    string metadata = 13;
+    bool   ready_for_claim = 14;
+    uint64 timestamp = 15;
 }
 
 // Claim message

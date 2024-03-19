@@ -129,17 +129,18 @@ type Deposit struct {
 	LeafType      uint32 `protobuf:"varint,1,opt,name=leaf_type,json=leafType,proto3" json:"leaf_type,omitempty"`
 	OrigNet       uint32 `protobuf:"varint,2,opt,name=orig_net,json=origNet,proto3" json:"orig_net,omitempty"`
 	OrigAddr      string `protobuf:"bytes,3,opt,name=orig_addr,json=origAddr,proto3" json:"orig_addr,omitempty"`
-	Amount        string `protobuf:"bytes,4,opt,name=amount,proto3" json:"amount,omitempty"`
-	DestNet       uint32 `protobuf:"varint,5,opt,name=dest_net,json=destNet,proto3" json:"dest_net,omitempty"`
-	DestAddr      string `protobuf:"bytes,6,opt,name=dest_addr,json=destAddr,proto3" json:"dest_addr,omitempty"`
-	BlockNum      uint64 `protobuf:"varint,7,opt,name=block_num,json=blockNum,proto3" json:"block_num,omitempty"`
-	DepositCnt    uint64 `protobuf:"varint,8,opt,name=deposit_cnt,json=depositCnt,proto3" json:"deposit_cnt,omitempty"`
-	NetworkId     uint32 `protobuf:"varint,9,opt,name=network_id,json=networkId,proto3" json:"network_id,omitempty"`
-	TxHash        string `protobuf:"bytes,10,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
-	ClaimTxHash   string `protobuf:"bytes,11,opt,name=claim_tx_hash,json=claimTxHash,proto3" json:"claim_tx_hash,omitempty"`
-	Metadata      string `protobuf:"bytes,12,opt,name=metadata,proto3" json:"metadata,omitempty"`
-	ReadyForClaim bool   `protobuf:"varint,13,opt,name=ready_for_claim,json=readyForClaim,proto3" json:"ready_for_claim,omitempty"`
-	Timestamp     uint64 `protobuf:"varint,14,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	SourceAddr    string `protobuf:"bytes,4,opt,name=source_addr,json=sourceAddr,proto3" json:"source_addr,omitempty"`
+	Amount        string `protobuf:"bytes,5,opt,name=amount,proto3" json:"amount,omitempty"`
+	DestNet       uint32 `protobuf:"varint,6,opt,name=dest_net,json=destNet,proto3" json:"dest_net,omitempty"`
+	DestAddr      string `protobuf:"bytes,7,opt,name=dest_addr,json=destAddr,proto3" json:"dest_addr,omitempty"`
+	BlockNum      uint64 `protobuf:"varint,8,opt,name=block_num,json=blockNum,proto3" json:"block_num,omitempty"`
+	DepositCnt    uint64 `protobuf:"varint,9,opt,name=deposit_cnt,json=depositCnt,proto3" json:"deposit_cnt,omitempty"`
+	NetworkId     uint32 `protobuf:"varint,10,opt,name=network_id,json=networkId,proto3" json:"network_id,omitempty"`
+	TxHash        string `protobuf:"bytes,11,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	ClaimTxHash   string `protobuf:"bytes,12,opt,name=claim_tx_hash,json=claimTxHash,proto3" json:"claim_tx_hash,omitempty"`
+	Metadata      string `protobuf:"bytes,13,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	ReadyForClaim bool   `protobuf:"varint,14,opt,name=ready_for_claim,json=readyForClaim,proto3" json:"ready_for_claim,omitempty"`
+	Timestamp     uint64 `protobuf:"varint,15,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 }
 
 func (x *Deposit) Reset() {
