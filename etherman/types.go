@@ -34,6 +34,7 @@ type Deposit struct {
 	LeafType           uint8
 	OriginalNetwork    uint
 	OriginalAddress    common.Address
+	SourceAddress      common.Address
 	Amount             *big.Int
 	DestinationNetwork uint
 	DestinationAddress common.Address
@@ -45,7 +46,7 @@ type Deposit struct {
 	Metadata           []byte
 	// it is only used for the bridge service
 	ReadyForClaim bool
-	Timestamp     time.Time  //zkbtc
+	Timestamp     time.Time //zkbtc
 }
 
 // Claim struct

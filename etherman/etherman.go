@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/ethereum/go-ethereum/core"
 	"math/big"
 	"time"
 
@@ -220,13 +221,26 @@ func (etherMan *Client) depositEvent(ctx context.Context, vLog types.Log, blocks
 	if err != nil {
 		return err
 	}
+
+	tx, _, err := etherMan.EtherClient.TransactionByHash(ctx, vLog.TxHash)
+	if err != nil {
+		return err
+	}
+
+	msg, err := core.TransactionToMessage(tx, types.NewLondonSigner(tx.ChainId()), big.NewInt(0))
+	if err != nil {
+		return err
+	}
+
 	var deposit Deposit
 	deposit.Amount = d.Amount
 	deposit.BlockNumber = vLog.BlockNumber
 	deposit.OriginalNetwork = uint(d.OriginNetwork)
+
 	deposit.DestinationAddress = d.DestinationAddress
 	deposit.DestinationNetwork = uint(d.DestinationNetwork)
 	deposit.OriginalAddress = d.OriginAddress
+	deposit.SourceAddress = msg.From
 	deposit.DepositCount = uint(d.DepositCount)
 	deposit.TxHash = vLog.TxHash
 	deposit.Metadata = d.Metadata
@@ -352,9 +366,9 @@ func (etherMan *Client) HeaderByNumber(ctx context.Context, number *big.Int) (*t
 
 // EthBlockByNumber function retrieves the ethereum block information by ethereum block number.
 func (etherMan *Client) EthBlockByNumber(ctx context.Context, blockNumber uint64) (*types.Block, error) {
-	log.Debug("========11111111v EthBlockByNumber==blkNum:",blockNumber)
+	log.Debug("========11111111v EthBlockByNumber==blkNum:", blockNumber)
 	block, err := etherMan.EtherClient.BlockByNumber(ctx, new(big.Int).SetUint64(blockNumber))
-	log.Debug("========222222222 EthBlockByNumber==blkNum:",blockNumber)
+	log.Debug("========222222222 EthBlockByNumber==blkNum:", blockNumber)
 	if err != nil {
 		if errors.Is(err, ethereum.NotFound) || err.Error() == "block does not exist in blockchain" {
 			return nil, ErrNotFound

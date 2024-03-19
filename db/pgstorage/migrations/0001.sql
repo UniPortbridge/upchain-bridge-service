@@ -64,6 +64,7 @@ CREATE TABLE syncv2.deposit
     network_id  INTEGER,
     orig_net    INTEGER,
     orig_addr  BYTEA NOT NULL,
+    source_addr BYTEA NOT NULL,
     amount      VARCHAR,
     dest_net    INTEGER NOT NULL,
     dest_addr   BYTEA NOT NULL,
