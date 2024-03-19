@@ -196,6 +196,13 @@ func (x *Deposit) GetOrigAddr() string {
 	return ""
 }
 
+func (x *Deposit) GetSourceAddr() string {
+	if x != nil {
+		return x.SourceAddr
+	}
+	return ""
+}
+
 func (x *Deposit) GetAmount() string {
 	if x != nil {
 		return x.Amount
